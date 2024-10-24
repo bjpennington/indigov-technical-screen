@@ -1,0 +1,18 @@
+{
+  "name": "constituent-contact-database",
+  "description": "A simple API to collect, store, and retrieve constituent contact information",
+  "authors": "bjpennington",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx app/index.ts",
+    "start": "tsc && node dist/index.js",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.9",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}
