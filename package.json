@@ -8,10 +8,12 @@
   "scripts": {
     "dev": "tsx app/index.ts",
     "start": "tsc && node dist/index.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "format": "prettier --write app/"
   },
   "devDependencies": {
     "@types/node": "^22.7.9",
+    "prettier": "^3.3.3",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
   }
