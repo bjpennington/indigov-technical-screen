@@ -1,11 +1,12 @@
 import { ConstituentsRepository } from "./constituents.repository";
+import { Constituents } from "./types";
 
 export class ConstituentsService {
   constructor(
     private readonly constituentsRepository: ConstituentsRepository,
   ) {}
 
-  listConstituents(): string {
+  listConstituents(): Promise<Constituents> {
     return this.constituentsRepository.findConstituents();
   }
 

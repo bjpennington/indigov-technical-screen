@@ -13,8 +13,8 @@ export class ConstituentsController {
     };
   }
 
-  getConstituents: RequestListener = (_request, response) => {
-    const constituentsList = this.constituentsService.listConstituents();
+  getConstituents: RequestListener = async (_request, response) => {
+    const constituentsList = await this.constituentsService.listConstituents();
     response.writeHead(200, DEFAULT_HEADERS);
 
     response.end(JSON.stringify(constituentsList));

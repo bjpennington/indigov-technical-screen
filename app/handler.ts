@@ -1,6 +1,7 @@
 import { RequestListener } from "http";
-import { parse } from "url";
+import { fileURLToPath, parse } from "url";
 import { generateConstituentsModule } from "./modules/constituents/constituents.factory";
+import { dirname, join } from "path";
 
 export type Router = Record<string, RequestListener>;
 
@@ -41,8 +42,11 @@ const requestHandler: RequestListener = async (request, response) => {
   }
 };
 
+const currentDir = dirname(fileURLToPath(import.meta.url));
+const databasePath = join(currentDir, "..", "database", "data.json");
+
 const router: Router = {
-  ...generateConstituentsModule({ db: "" }),
+  ...generateConstituentsModule({ databasePath }),
   notFound: notFoundHandler,
 };
 

@@ -1,12 +1,23 @@
-export class ConstituentsRepository {
-  constructor(private readonly db: string) {}
+import { readFile } from "fs/promises";
+import { Constituents } from "./types";
 
-  findConstituent() {
+export class ConstituentsRepository {
+  constructor(private readonly databasePath: string) {}
+
+  async currentDatabaseContent(): Promise<{
+    constituents: Constituents;
+  }> {
+    const contentsBuffer = await readFile(this.databasePath);
+    return JSON.parse(contentsBuffer.toString());
+  }
+
+  async findConstituent() {
     return "here is a constituent";
   }
 
-  findConstituents() {
-    return "list of constituents";
+  async findConstituents() {
+    const constituentsData = await this.currentDatabaseContent();
+    return constituentsData.constituents;
   }
 
   createConstituent() {
