@@ -1,12 +1,22 @@
 {
   "constituents": {
     "bjpennington112@protonmail.com": {
+      "email": "bjpennington112@protonmail.com",
       "firstName": "BJ",
       "lastName": "Pennington",
       "addressLine1": "123 Any Street",
       "city": "Minneapolis",
       "state": "MN",
-      "zipCode": "55555"
+      "zipCode": "55555",
+      "createdAt": "2024-10-20T21:48:45.679Z",
+      "lastUpdated": "2024-10-24T21:52:31.138Z"
+    },
+    "bjpennington112@gmail.co": {
+      "email": "bjpennington112@gmail.co",
+      "firstName": "Tho",
+      "lastName": "kieu",
+      "createdAt": "2024-10-24T22:39:16.786Z",
+      "lastUpdated": "2024-10-24T22:39:16.786Z"
     }
   }
 }

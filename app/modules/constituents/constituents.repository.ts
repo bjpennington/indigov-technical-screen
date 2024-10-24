@@ -1,5 +1,5 @@
-import { readFile } from "fs/promises";
-import { Constituents } from "./types";
+import { readFile, writeFile } from "fs/promises";
+import { Constituent, Constituents } from "./types";
 
 export class ConstituentsRepository {
   constructor(private readonly databasePath: string) {}
@@ -11,8 +11,11 @@ export class ConstituentsRepository {
     return JSON.parse(contentsBuffer.toString());
   }
 
-  async findConstituent() {
-    return "here is a constituent";
+  async findConstituent(email: string) {
+    const constituentsData = await this.currentDatabaseContent();
+    const constituent = constituentsData.constituents[email];
+
+    return constituent;
   }
 
   async findConstituents() {
@@ -20,7 +23,36 @@ export class ConstituentsRepository {
     return constituentsData.constituents;
   }
 
-  createConstituent() {
-    return "you made a constituent";
+  async createConstituent(constituent: Constituent) {
+    const constituentsData = await this.currentDatabaseContent();
+
+    const currentDate = new Date();
+
+    constituentsData.constituents = {
+      ...constituentsData.constituents,
+      [constituent.email]: {
+        ...constituent,
+        createdAt: currentDate,
+        lastUpdated: currentDate,
+      },
+    };
+
+    return writeFile(this.databasePath, JSON.stringify(constituentsData));
+  }
+
+  async putConstituent(constituent: Constituent) {
+    const constituentsData = await this.currentDatabaseContent();
+
+    const currentDate = new Date();
+
+    constituentsData.constituents = {
+      ...constituentsData.constituents,
+      [constituent.email]: {
+        ...constituent,
+        lastUpdated: currentDate,
+      },
+    };
+
+    return writeFile(this.databasePath, JSON.stringify(constituentsData));
   }
 }

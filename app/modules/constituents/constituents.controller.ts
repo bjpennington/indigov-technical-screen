@@ -1,6 +1,8 @@
 import { RequestListener } from "http";
+import { once } from "events";
 import { DEFAULT_HEADERS, Router } from "../../handler";
 import { ConstituentsService } from "./constituents.service";
+import { Constituent } from "./types";
 
 export class ConstituentsController {
   readonly routes: Router;
@@ -20,17 +22,32 @@ export class ConstituentsController {
     response.end(JSON.stringify(constituentsList));
   };
 
-  postConstituent: RequestListener = (_request, response) => {
-    const constituentSuccessMessage = this.constituentsService.addConstituent();
+  postConstituent: RequestListener = async (request, response) => {
+    const dataBuffer = await once(request, "data");
+    const data = JSON.parse(dataBuffer.toString());
+
+    const constituentSuccessMessage =
+      await this.constituentsService.addConstituent(
+        data as unknown as Constituent,
+      );
     response.writeHead(201, DEFAULT_HEADERS);
 
     response.end(JSON.stringify(constituentSuccessMessage));
   };
 
-  downloadConstituent: RequestListener = (_request, response) => {
-    const constituentsCSV = this.constituentsService.makeConstituentsCSV();
-    response.writeHead(200, DEFAULT_HEADERS);
+  downloadConstituent: RequestListener = async (_request, response) => {
+    const constituentsCSV =
+      await this.constituentsService.makeConstituentsCSV();
 
-    response.end(JSON.stringify(constituentsCSV));
+    const currentTime = new Date();
+    const dateString = currentTime.toISOString();
+
+    response.writeHead(200, {
+      ...DEFAULT_HEADERS,
+      "Content-Type": "text/csv",
+      "Content-Disposition": `attachment; filename=constituents-contact-export-${dateString}.csv`,
+    });
+
+    response.end(constituentsCSV);
   };
 }

@@ -1,4 +1,4 @@
-import http, { RequestListener } from "http";
+import http from "http";
 import requestHandler from "./handler";
 
 const PORT: number = 3000;
