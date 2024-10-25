@@ -1,6 +1,6 @@
-import { ConstituentsController } from "./constituents.controller";
-import { ConstituentsRepository } from "./constituents.repository";
-import { ConstituentsService } from "./constituents.service";
+import { ConstituentsController } from "./constituents.controller.js";
+import { ConstituentsRepository } from "./constituents.repository.js";
+import { ConstituentsService } from "./constituents.service.js";
 
 export const generateConstituentsModule = ({
   databasePath,

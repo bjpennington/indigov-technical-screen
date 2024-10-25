@@ -1,6 +1,6 @@
 import { stringify } from "csv-stringify/sync";
-import { ConstituentsRepository } from "./constituents.repository";
-import { Constituent, Constituents } from "./types";
+import { ConstituentsRepository } from "./constituents.repository.js";
+import { Constituent, Constituents } from "./types.js";
 
 export class ConstituentsService {
   constructor(

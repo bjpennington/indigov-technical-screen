@@ -1,7 +1,7 @@
 import { RequestListener } from "http";
 import { fileURLToPath, parse } from "url";
-import { generateConstituentsModule } from "./modules/constituents/constituents.factory";
 import { dirname, join } from "path";
+import { generateConstituentsModule } from "./modules/constituents/constituents.factory.js";
 
 export type Router = Record<string, RequestListener>;
 

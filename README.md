@@ -26,7 +26,7 @@
       app is running at 3000
       ```
 
-      in your terminal. Visit or `curl` [localhost:3000](http://localhost:3000/) and you should see a "Hello world!" message.
+      in your terminal. Visit or `curl` [localhost:3000](http://localhost:3000/) and you should see a "Hello world!" message. (If using a browser, depending on the browser you may need to check the network responses to see the response).
 
 Data is stored in a json file at `database/data.json`, so there's no need to perform any database setup.
 
@@ -55,7 +55,7 @@ Data is stored in a json file at `database/data.json`, so there's no need to per
       --header "Content- Type: application/json" \
       --data @- << EOF
     {
-      "email": "constituent@email.co",
+      "email": "constituent@email.com",
       "firstName": "Lorna",
       "lastName": "Doone",
       "addressLine1": "456 Madeup Lane",

@@ -1,5 +1,5 @@
 import http from "http";
-import requestHandler from "./handler";
+import requestHandler from "./handler.js";
 
 const PORT: number = 3000;
 

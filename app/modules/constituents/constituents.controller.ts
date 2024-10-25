@@ -1,9 +1,9 @@
 import { RequestListener } from "http";
 import { once } from "events";
 import querystring from "querystring";
-import { DEFAULT_HEADERS, Router } from "../../handler";
-import { ConstituentsService } from "./constituents.service";
-import { Constituent } from "./types";
+import { DEFAULT_HEADERS, Router } from "../../handler.js";
+import { ConstituentsService } from "./constituents.service.js";
+import { Constituent } from "./types.js";
 export class ConstituentsController {
   readonly routes: Router;
 

@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "fs/promises";
-import { Constituent, Constituents } from "./types";
+import { Constituent, Constituents } from "./types.js";
 
 export class ConstituentsRepository {
   constructor(private readonly databasePath: string) {}
