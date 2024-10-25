@@ -1,5 +1,5 @@
 {
-  "name": "constituent-contact-database",
+  "name": "constituent-contact-service",
   "description": "A simple API to collect, store, and retrieve constituent contact information",
   "authors": "bjpennington",
   "version": "0.0.1",
