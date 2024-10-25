@@ -1,1 +1,22 @@
-{"constituents":{"bjpennington112@protonmail.com":{"email":"bjpennington112@protonmail.com","firstName":"BJ","lastName":"Pennington","addressLine1":"123 Any Street","city":"Minneapolis","state":"MN","zipCode":"55555","createdAt":"2024-10-20T21:48:45.679Z","lastUpdated":"2024-10-24T21:52:31.138Z"},"bjpennington112@gmail.co":{"email":"bjpennington112@gmail.co","firstName":"Tho","lastName":"Kieu","createdAt":"2024-10-25T01:48:36.284Z","lastUpdated":"2024-10-25T01:49:23.033Z"},"constituent@email.co":{"email":"constituent@email.co","firstName":"Lorna","lastName":"Doone","addressLine1":"456 Madeup Lane","addressLine2":"Apt 101","city":"Madeupville","state":"OH","zipCode":"43231","createdAt":"2024-10-25T02:25:34.313Z","lastUpdated":"2024-10-25T02:25:34.313Z"},"undefined":{"firstName":"Lorna","lastName":"Doone","addressLine1":"456 Madeup Lane","addressLine2":"Apt 101","city":"Madeupville","state":"OH","zipCode":"43231","createdAt":"2024-10-25T02:34:24.561Z","lastUpdated":"2024-10-25T02:34:24.561Z"}}}
+{
+  "constituents": {
+    "bjpennington112@protonmail.com": {
+      "email": "bjpennington112@protonmail.com",
+      "firstName": "BJ",
+      "lastName": "Pennington",
+      "addressLine1": "123 Any Street",
+      "city": "Minneapolis",
+      "state": "MN",
+      "zipCode": "55555",
+      "createdAt": "2024-10-20T21:48:45.679Z",
+      "lastUpdated": "2024-10-24T21:52:31.138Z"
+    },
+    "bjpennington112@gmail.co": {
+      "email": "bjpennington112@gmail.co",
+      "firstName": "Tho",
+      "lastName": "Kieu",
+      "createdAt": "2024-10-25T01:48:36.284Z",
+      "lastUpdated": "2024-10-25T01:49:23.033Z"
+    }
+  }
+}
