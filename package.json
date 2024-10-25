@@ -11,13 +11,13 @@
     "typecheck": "tsc",
     "format": "prettier --write app/"
   },
+  "dependencies": {
+    "csv-stringify": "^6.5.1"
+  },
   "devDependencies": {
     "@types/node": "^22.7.9",
     "prettier": "^3.3.3",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
-  },
-  "dependencies": {
-    "csv-stringify": "^6.5.1"
   }
 }
