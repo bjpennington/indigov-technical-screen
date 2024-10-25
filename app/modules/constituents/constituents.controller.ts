@@ -1,6 +1,6 @@
 import { RequestListener } from "http";
 import { once } from "events";
-import querystring from 'querystring'
+import querystring from "querystring";
 import { DEFAULT_HEADERS, Router } from "../../handler";
 import { ConstituentsService } from "./constituents.service";
 import { Constituent } from "./types";
@@ -17,8 +17,8 @@ export class ConstituentsController {
 
   getConstituents: RequestListener = async (_request, response) => {
     const constituentsList = await this.constituentsService.listConstituents();
-    response.writeHead(200, DEFAULT_HEADERS);
 
+    response.writeHead(200, DEFAULT_HEADERS);
     response.end(JSON.stringify(constituentsList));
   };
 
@@ -31,16 +31,14 @@ export class ConstituentsController {
     );
 
     response.writeHead(201, DEFAULT_HEADERS);
-
     response.end(JSON.stringify("Success"));
   };
 
   downloadConstituent: RequestListener = async (request, response) => {
     const { url } = request;
-    const queryString = url?.split('?')[1];
+    const queryString = url?.split("?")[1];
     const queryParams = querystring.parse(queryString ?? "");
-
-    const dateFilter = queryParams['after'] as unknown as string;
+    const dateFilter = queryParams["after"] as unknown as string;
 
     const constituentsCSV =
       await this.constituentsService.makeConstituentsCSV(dateFilter);
@@ -53,7 +51,6 @@ export class ConstituentsController {
       "Content-Type": "text/csv",
       "Content-Disposition": `attachment; filename=constituents-contact-export-${dateString}.csv`,
     });
-
     response.end(constituentsCSV);
   };
 }

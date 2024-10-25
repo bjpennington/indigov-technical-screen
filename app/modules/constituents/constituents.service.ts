@@ -25,12 +25,13 @@ export class ConstituentsService {
   async makeConstituentsCSV(dateFilter: string): Promise<string> {
     const constituentsList =
       await this.constituentsRepository.findConstituents();
-    const flatList = [];
     const filterDate = dateFilter && new Date(dateFilter).getTime();
 
+    const flatList = [];
+
     for (const [_key, value] of Object.entries(constituentsList)) {
-      const createdDate = (new Date(value.createdAt)).getTime();
-  
+      const createdDate = new Date(value.createdAt).getTime();
+
       if (filterDate && createdDate < filterDate) {
         continue;
       }
@@ -40,6 +41,7 @@ export class ConstituentsService {
         createdAt: new Date(value.createdAt).toDateString(),
         lastUpdated: new Date(value.lastUpdated).toDateString(),
       };
+
       flatList.push(constituent);
     }
 

@@ -43,7 +43,8 @@ export class ConstituentsRepository {
   async putConstituent(constituent: Constituent) {
     const constituentsData = await this.currentDatabaseContent();
 
-    const originalConstituent = constituentsData.constituents[constituent.email];
+    const originalConstituent =
+      constituentsData.constituents[constituent.email];
     const currentDate = new Date();
 
     constituentsData.constituents = {

@@ -11,6 +11,12 @@ export const DEFAULT_HEADERS = {
   "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
 };
 
+const rootHandler: RequestListener = (_request, response) => {
+  response.writeHead(200, DEFAULT_HEADERS);
+  response.write(JSON.stringify({ message: "Hello world!" }));
+  response.end();
+};
+
 const notFoundHandler: RequestListener = (_request, response) => {
   response.writeHead(404, DEFAULT_HEADERS);
   response.write(
@@ -47,6 +53,7 @@ const databasePath = join(currentDir, "..", "database", "data.json");
 
 const router: Router = {
   ...generateConstituentsModule({ databasePath }),
+  "get:/": rootHandler,
   notFound: notFoundHandler,
 };
 
