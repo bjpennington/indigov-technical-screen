@@ -41,7 +41,7 @@ Data is stored in a json file at `database/data.json`, so there's no need to per
 - GET constituents:
 
     ```sh
-    curl http://localhost:3000/constituents
+    curl "http://localhost:3000/constituents"
     ```
 
     or visit [localhost:3000/constituents](http://localhost:3000/constituents) to see a list of all constituents
@@ -74,7 +74,7 @@ Data is stored in a json file at `database/data.json`, so there's no need to per
 - GET constituents/download:
 
     ```sh
-    curl http://localhost:3000/constituents/download
+    curl "http://localhost:3000/constituents/download"
     ```
 
     to get a CSV list of all constituents, or visit [localhost:3000/constituents/download](http://localhost:3000/constituents/download) to download a CSV file from the browser.
@@ -82,7 +82,7 @@ Data is stored in a json file at `database/data.json`, so there's no need to per
     You can also add a query param using the format `after=month-day-year` to only download constituent records created after a certain date:
 
     ```sh
-    curl http://localhost:3000/constituents/download?after=10-22-24
+    curl "http://localhost:3000/constituents/download?after=10-22-24"
     ```
 
     or via browser: [localhost:3000/constituents/download?after=10-22-24](http://localhost:3000/constituents/download?after=10-22-24).
