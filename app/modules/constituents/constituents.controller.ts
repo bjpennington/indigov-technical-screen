@@ -26,6 +26,12 @@ export class ConstituentsController {
     const dataBuffer = await once(request, "data");
     const data = JSON.parse(dataBuffer.toString());
 
+    if (!data.email) {
+      response.writeHead(400, DEFAULT_HEADERS);
+      response.end(JSON.stringify({ error: "email field must be provided" }));
+      return;
+    }
+
     await this.constituentsService.addConstituent(
       data as unknown as Constituent,
     );
