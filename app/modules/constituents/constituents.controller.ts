@@ -1,9 +1,9 @@
 import { RequestListener } from "http";
 import { once } from "events";
+import querystring from 'querystring'
 import { DEFAULT_HEADERS, Router } from "../../handler";
 import { ConstituentsService } from "./constituents.service";
 import { Constituent } from "./types";
-
 export class ConstituentsController {
   readonly routes: Router;
 
@@ -26,21 +26,27 @@ export class ConstituentsController {
     const dataBuffer = await once(request, "data");
     const data = JSON.parse(dataBuffer.toString());
 
-    const constituentSuccessMessage =
-      await this.constituentsService.addConstituent(
-        data as unknown as Constituent,
-      );
+    await this.constituentsService.addConstituent(
+      data as unknown as Constituent,
+    );
+
     response.writeHead(201, DEFAULT_HEADERS);
 
-    response.end(JSON.stringify(constituentSuccessMessage));
+    response.end(JSON.stringify("Success"));
   };
 
-  downloadConstituent: RequestListener = async (_request, response) => {
-    const constituentsCSV =
-      await this.constituentsService.makeConstituentsCSV();
+  downloadConstituent: RequestListener = async (request, response) => {
+    const { url } = request;
+    const queryString = url?.split('?')[1];
+    const queryParams = querystring.parse(queryString ?? "");
 
-    const currentTime = new Date();
-    const dateString = currentTime.toISOString();
+    const dateFilter = queryParams['after'] as unknown as string;
+
+    const constituentsCSV =
+      await this.constituentsService.makeConstituentsCSV(dateFilter);
+
+    const currentDate = new Date();
+    const dateString = currentDate.toISOString();
 
     response.writeHead(200, {
       ...DEFAULT_HEADERS,

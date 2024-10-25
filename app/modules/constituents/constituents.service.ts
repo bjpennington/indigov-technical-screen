@@ -22,16 +22,23 @@ export class ConstituentsService {
     }
   }
 
-  async makeConstituentsCSV(): Promise<string> {
+  async makeConstituentsCSV(dateFilter: string): Promise<string> {
     const constituentsList =
       await this.constituentsRepository.findConstituents();
     const flatList = [];
+    const filterDate = dateFilter && new Date(dateFilter).getTime();
 
     for (const [_key, value] of Object.entries(constituentsList)) {
+      const createdDate = (new Date(value.createdAt)).getTime();
+  
+      if (filterDate && createdDate < filterDate) {
+        continue;
+      }
+
       const constituent = {
         ...value,
-        createdAt: new Date(value.createdAt).toISOString(),
-        lastUpdated: new Date(value.lastUpdated).toISOString(),
+        createdAt: new Date(value.createdAt).toDateString(),
+        lastUpdated: new Date(value.lastUpdated).toDateString(),
       };
       flatList.push(constituent);
     }
